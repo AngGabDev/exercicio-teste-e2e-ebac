@@ -4,15 +4,16 @@ pipeline {
     stages {
         stage('setup') {
             steps {
-                git branch: 'main', url: 'https://github.com/AngGabDev/exercicio-teste-e2e-ebac.git'
-                bat 'npm install'
+                sh 'npm install'
             }
         }
         stage('teste') {
             steps {
-                bat '''set NO_COLOR=1
-npm test'''
+                sh 'npm run cy:run'
             }
+        }
+        stage('Deploy') {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'EBAC Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
 }
