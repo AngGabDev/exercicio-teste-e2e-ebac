@@ -13,7 +13,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-           step {
+           steps {
                  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'EBAC Report', reportTitles: '', useWrapperFileDirectly: true])
            }
         }
