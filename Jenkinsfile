@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('setup') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('teste') {
             steps {
-                sh 'npm run cy:run'
+                bat 'npm run cy:run'
             }
         }
         stage('Deploy') {
